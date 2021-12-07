@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <td rowspan = "2" colspan = "2">最常消費櫃</td>
+                    <td colspan="9">Snow Diamond</td>
+                    <td colspan="9">Snow Crystal</td>
+                    <td colspan="9">Snow Water</td>
+                </tr>
+                <tr>              
+                    <td>TTL</td>
+                    <td>20</td>
+                    <td>YOY</td>
+                    <td>New</td>
+                    <td>20</td>
+                    <td>YOY</td>
+                    <td>Retention</td>
+                    <td>20</td>
+                    <td>YOY</td>
+                    <td>TTL</td>
+                    <td>20</td>
+                    <td>YOY</td>
+                    <td>New</td>
+                    <td>20</td>
+                    <td>YOY</td>
+                    <td>Retention</td>
+                    <td>20</td>
+                    <td>YOY</td>
+                    <td>TTL</td>
+                    <td>20</td>
+                    <td>YOY</td>
+                    <td>New</td>
+                    <td>20</td>
+                    <td>YOY</td>
+                    <td>Retention</td>
+                    <td>20</td>
+                    <td>YOY</td>
+                </tr>
+            </thead>
+            <tbody id="place-here"></tbody>
+        </table>
+        <style>
+            h2 {
+                text-align: center;
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+            }
+            table {
+                width: 600px;
+                border: 1px solid black;
+                border-collapse: collapse;
+                margin-left: auto;
+                margin-right: auto;
+                font-family: "Lucida Console", Monaco, monospace;
+            }
+            th {
+                border: 1px solid black;
+                height: 20px;
+                font-size: 16px;
+                font-weight: bold;
+                text-align: center;
+            }
+            td {
+                border: 1px solid black;
+                height: 20px;
+                font-size: 16px;
+                text-align: center;
+            }
+            p {
+                text-align: center;
+                font-size: 11px;
+                font-family: "Lucida Console", Monaco, monospace;
+            }
+        </style>
+        <script>
+            var payload = '';
+            fetch('/LNG_02').then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                let result = JSON.parse(data);
+                let res = '';
+                result.forEach((data, index) => {
+                    res += `<tr>
+                                <td>${data.partner_id}</td>
+                                <td>${data.partner_name}</td>
+                                <td>${data.TTL}</td>
+                                <td>20</td>
+                                <td>YOY</td>
+                                <td>New</td>
+                                <td>20</td>
+                                <td>YOY</td>
+                                <td>Retention</td>
+                                <td>20</td>
+                                <td>YOY</td>
+                                <td>${data.TTL}</td>
+                                <td>21</td>
+                                <td>YOY</td>
+                                <td>New</td>
+                                <td>20</td>
+                                <td>YOY</td>
+                                <td>Retention</td>
+                                <td>20</td>
+                                <td>YOY</td>
+                                <td>${data.TTL}</td>
+                                <td>22</td>
+                                <td>YOY</td>
+                                <td>New</td>
+                                <td>20</td>
+                                <td>YOY</td>
+                                <td>Retention</td>
+                                <td>20</td>
+                                <td>YOY</td>
+                            </tr>`
+                })
+                $('#place-here').html(res); 
+            });
+        </script>
+    </body>
+</html>
